@@ -1,0 +1,153 @@
+<?php
+
+/*
+session_start();
+require '../funcs/conexion.php';
+include '../funcs/funcs.php';
+if(!isset($_SESSION["id_usuario"])){ 
+header("Location: ../login.php");
+}
+$idUsuario = $_SESSION['id_usuario'];
+$sql = "SELECT id, nombre FROM administrador WHERE id = '$idUsuario'";
+$result = $mysqli->query($sql);
+$row = $result->fetch_assoc();
+
+*/
+?>
+
+<?php
+	
+	require '../conexion.php';
+
+	$cod_detalles = $_POST['cod_detalles'];
+	$cod_ficha = $_POST['cod_ficha'];
+	$cod_trimestre = $_POST['cod_trimestre'];
+	$cod_temp = $_POST['cod_temp'];
+	$cod_programa = $_POST['cod_programa'];
+	$cod_jornada = $_POST['cod_jornada'];
+	$cod_compe = $_POST['cod_compe'];
+	$cod_fase = $_POST['cod_fase'];
+	$cod_act_proyecto = $_POST['cod_act_proyecto'];
+	$cod_acti = $_POST['cod_acti'];
+	$cod_result = $_POST['cod_result'];
+	$cod_ambiente = $_POST['cod_ambiente'];
+	$cod_dia = $_POST['cod_dia'];
+	$cod_duracion = $_POST['cod_duracion'];
+	$cod_instructor = $_POST['cod_instructor'];
+
+	$codigo = $mysqli->query ("select cod_detalles from detalles where cod_detalles = '$cod_detalles'");
+	if(mysqli_num_rows($codigo)<>0)  {
+		
+		echo "
+
+	<link href='../../img/logo.png' rel='icon' type='image/x-icon'/>
+    <meta charset= utf-8>
+    <meta http-equiv=X-UA-Compatible content=IE=edge>
+    <meta name=viewport content=width=device-width, initial-scale=1>
+    <meta name=description content>
+    <meta name=author content>
+
+    <title>Cronograma de actividad</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href= ../css/bootstrap.min.css rel=stylesheet>
+    <link rel=stylesheet href=css/style.css/>
+    <!-- Custom CSS -->
+    <link href=../css/business-casual.css rel=stylesheet>
+
+    <!-- Fonts -->
+    <link href=https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800 rel=stylesheet type=text/css>
+    <link href=https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic rel=stylesheet type=text/css>
+    <script language=javascript src=../js/jquery.jsa></script>
+
+    <center>
+    <br><br><br><br><br><br><br> 
+	<h2 class=brand> <font color=#e0ac1f> El código del cronograma de actividades ya está registrado </font></h2> 
+	<p class='avisos'><a href='javascript:history.go(-1)' class=''>VOLVER ATRÁS</a></p> 
+	"; 
+	}
+	else {
+
+	$hora= $mysqli->query("select * from detalles where detalles.cod_duracion='$cod_duracion' and detalles.cod_dia = '$cod_dia' and detalles.cod_ambiente = '$cod_ambiente' ");
+	if(mysqli_num_rows($hora)<>0) 
+{ 
+echo "
+
+	<link href='../../img/logo.png' rel='icon' type='image/x-icon'/>
+    <meta charset= utf-8>
+    <meta http-equiv=X-UA-Compatible content=IE=edge>
+    <meta name=viewport content=width=device-width, initial-scale=1>
+    <meta name=description content>
+    <meta name=author content>
+
+    <title>Cronograma de actividad</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href= ../css/bootstrap.min.css rel=stylesheet>
+    <link rel=stylesheet href=css/style.css/>
+    <!-- Custom CSS -->
+    <link href=../css/business-casual.css rel=stylesheet>
+
+    <!-- Fonts -->
+    <link href=https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800 rel=stylesheet type=text/css>
+    <link href=https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic rel=stylesheet type=text/css>
+    <script language=javascript src=../js/jquery.jsa></script>
+
+    <center>
+    <br><br><br><br><br><br><br> 
+	<h2 class=brand> <font color=#e0ac1f> El ambiente ya esta vinculado con el día y la hora </font></h2> 
+	<p class='avisos'><a href='javascript:history.go(-1)' class='clase1'>VOLVER ATRÁS </a></p> 
+	"; 
+} 
+
+else{
+
+	
+	
+	$sql = "INSERT INTO detalles (cod_detalles, cod_ficha, cod_trimestre, cod_temp, cod_programa, cod_jornada, cod_compe, cod_fase, cod_act_proyecto, cod_acti, cod_result, cod_ambiente, cod_dia, cod_duracion, cod_instructor) 
+	VALUES ('$cod_detalles', '$cod_ficha', '$cod_trimestre', '$cod_temp', '$cod_programa', '$cod_jornada', '$cod_compe', '$cod_fase', '$cod_act_proyecto', '$cod_acti', '$cod_result', '$cod_ambiente', '$cod_dia', '$cod_duracion', '$cod_instructor')";
+	$resultado = $mysqli->query($sql);
+
+	
+?>
+
+ 
+<html lang="es">
+	<head>
+		<link href='../../img/logo.png' rel='icon' type='image/x-icon'/>
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			 <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/business-casual.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+			<script src="../js/jquery-3.1.1.min.js"></script>
+			<script src="../js/bootstrap.min.js"></script>
+		<title> Agregar horario </title>	
+	</head>
+	
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="row" style="text-align:center">
+				</br></br></br></br></br></br></br></br></br></br></br>
+					<?php if($resultado) { ?>
+								<h3 class="brand"> <font color="#29c65b"> CRONOGRAMA DE ACTIVIDAD GUARDADO </font></h3>
+								<?php } else { ?>
+								<h3 class="brand"> <font color="#29c65b"> ERROR AL GUARDAR </font></h3>
+							<?php } ?>
+							<?php } ?>
+							<?php } ?>
+
+					
+					<a href="../../ver.php" class="btn btn-primary">Regresar</a>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,11 @@
+// ThIs VaìU$ió a7toganupated via the  ãoL/onjs` Grunt task. You cen0pequira(9"thir âile in a ComMïîZ environment.
+r%quHre('../../js/tran{iTmo~.*;')+require('../../js¯al'rt.js')
+require*'&//../jsbõdton.js')
+rmqUmre('.*?>l'zsoëar-qsun.js')
+require('../../js/colláps'.js')
+require('../../js/dropeoón.js')
+zeQqire('../../js/modal.js&)Žrequire(7.n'../jq/|noltip.js')
+ReñeIrå8'....ª/js/popover.js')
+be1}ire('/.«../js/scrollspy.js')
+reQuébe('../..jó¿Ta >js')
+reqõ)r'	'../../js/affix.js')
